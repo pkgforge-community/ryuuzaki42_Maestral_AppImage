@@ -37,6 +37,7 @@ jobs:
 
     - name: Make AppImage
       run: |
+        version="1.8.0"
         set -x
         cd squashfs-root/
         pwd
@@ -51,6 +52,8 @@ jobs:
         #find . | grep ".desktop"
         cp opt/python3.9/share/applications/maestral.desktop .
         cat maestral.desktop
+
+        sed -i "s/Name = Maestral/Name = maestral-$version/" maestral.desktop
 
         pwd
         ls -lah
