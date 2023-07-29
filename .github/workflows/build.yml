@@ -44,6 +44,7 @@ jobs:
         cp opt/python3.9/share/icons/hicolor/512x512/apps/maestral.png .
 
         find squashfs-root/ | grep ".desktop"
+        cp usr/share/applications/python3.9.16.desktop .
 
         cd ../
         mv AppRun squashfs-root/
