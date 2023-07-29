@@ -44,15 +44,9 @@ jobs:
         cd ../
         mv AppRun squashfs-root/
 
-        #opt/python3.9/bin/maestral
-        #chmod +x AppRun
-        #./AppRun
-        #./AppRun gui
-        #cd ../
-        ARCH=x86_64 appimagetool-x86_64.AppImage squashfs-root/
+        ls -l opt/python3.9/bin/maestral
 
-        #./Maestral-x86_64.AppImage 
-        #./Maestral-x86_64.AppImage gui
+        ARCH=x86_64 ./appimagetool-x86_64.AppImage squashfs-root/
 
     # Build - Error: Resource not accessible by integration
     # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
@@ -63,7 +57,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          file: "out/Authy*.AppImage; out/Authy*.md5"
+          file: "Maestral*.AppImage; Maestral*.md5"
           #delete_file: "random-name-*.txt;random-*.txt"
           release_id: ${{ steps.create_release.outputs.id }}
           #overwrite: true
