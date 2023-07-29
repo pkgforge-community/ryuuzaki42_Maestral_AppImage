@@ -10,27 +10,37 @@ jobs:
     - name: install fuse and libfuse2
       run: sudo apt install fuse libfuse2
 
-    - name: Get pkg2appimage
+    - name: Get appimagetool
       run: |
         set -x
-        curl --location -o pkg2appimage https://github.com/AppImageCommunity/pkg2appimage/releases/download/continuous/pkg2appimage-1807-x86_64.AppImage
-        chmod +x pkg2appimage
+        wget https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage
+        chmod +x appimagetool-x86_64.AppImage
         ls -lah
+
+    - name: Get pyhton
+      run: |
+        set -x
+        wget https://github.com/niess/python-appimage/releases/download/python3.9/python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage
+        chmod +x python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage
 
     - name: Make AppImage
       run: |
         set -x
-        ./pkg2appimage Authy.yml
-        ls -lahR
+        ./python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage --appimage-extract
 
-        cd out/
-        fileName=$(ls Authy*.AppImage)
-        echo "fileName: $fileName"
-        fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
-        mv "$fileName" "${fileNameNew}-1_JB.AppImage"
-        md5sum "${fileNameNew}-1_JB.AppImage" > "${fileNameNew}-1_JB.AppImage.md5"
-        ls -lahR
-        cd ../
+        cd opt/python3.9/bin/
+        ./pip3.9 install --upgrade 'maestral[gui]'
+        cd squashfs-root/opt/python3.9/lib
+        ./python3.9 -m pip install --upgrade pip
+        opt/python3.9/bin/maestral
+        chmod +x AppRun
+        #./AppRun
+        #./AppRun gui
+        #cd ../
+        ARCH=x86_64 appimagetool-x86_64.AppImage squashfs-root/
+
+        #./Maestral-x86_64.AppImage 
+        #./Maestral-x86_64.AppImage gui
 
     # Build - Error: Resource not accessible by integration
     # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
