@@ -29,10 +29,13 @@ jobs:
         ./python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage --appimage-extract
 
         cd squashfs-root/opt/python3.9/bin/
-        ./pip3.9 install --upgrade 'maestral[gui]'
-        cd ../lib/
-        ./python3.9 -m pip install --upgrade pip
+        ./pip3 install --upgrade 'maestral[gui]'
+        ./python3 -m pip install --upgrade pip
+        cd ../../../../
+        pwd
+        ls -lah
 
+        #cd ../lib/
         #opt/python3.9/bin/maestral
         chmod +x AppRun
         #./AppRun
