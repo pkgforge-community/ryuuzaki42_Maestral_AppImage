@@ -31,11 +31,16 @@ jobs:
         cd squashfs-root/opt/python3.9/bin/
         ./pip3 install --upgrade 'maestral[gui]'
         ./python3 -m pip install --upgrade pip
-        cd ../../../../
+        cd ../../../
         pwd
         ls -lah
 
-        #cd ../lib/
+        rm python*
+        ls -lah
+
+        cd ../
+        mv AppRun squashfs-root/
+
         #opt/python3.9/bin/maestral
         chmod +x AppRun
         #./AppRun
