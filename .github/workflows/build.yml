@@ -39,11 +39,15 @@ jobs:
         ls -lah
 
         rm -v python* .DirIcon
+        
+        #find squashfs-root/ | grep "png"
+        cp opt/python3.9/share/icons/hicolor/512x512/apps/maestral.png .
+
+        find squashfs-root/ | grep ".desktop"
+
         cd ../
         mv AppRun squashfs-root/
         ls -lah squashfs-root/
-
-        find squashfs-root/ | grep "png"
 
         ARCH=x86_64 ./appimagetool-x86_64.AppImage squashfs-root/
 
