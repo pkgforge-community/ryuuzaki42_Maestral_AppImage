@@ -37,14 +37,14 @@ jobs:
         pwd
         ls -lah
 
-        rm python*
+        rm -v python* .DirIcon
         ls -lah
 
         cd ../
         mv AppRun squashfs-root/
 
         #opt/python3.9/bin/maestral
-        chmod +x AppRun
+        #chmod +x AppRun
         #./AppRun
         #./AppRun gui
         #cd ../
