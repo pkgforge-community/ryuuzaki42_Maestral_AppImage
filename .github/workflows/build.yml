@@ -50,6 +50,7 @@ jobs:
 
         #find . | grep ".desktop"
         cp opt/python3.9/share/applications/maestral.desktop .
+        cat maestral.desktop
 
         pwd
         ls -lah
