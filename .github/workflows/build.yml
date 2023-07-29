@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@main
-    - name: install fuse and libfuse2
+    - name: Install fuse and libfuse2
       run: sudo apt install fuse libfuse2
 
     - name: Get appimagetool
@@ -17,7 +17,7 @@ jobs:
         chmod +x appimagetool-x86_64.AppImage
         ls -lah
 
-    - name: Get pyhton
+    - name: Get Pyhton AppImage
       run: |
         set -x
         wget https://github.com/niess/python-appimage/releases/download/python3.9/python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage
@@ -25,7 +25,7 @@ jobs:
         ./python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage --appimage-extract
         ls -lah
 
-    - name: Install  maestral
+    - name: Install maestral and update pip
       run: |
         set -x
         cd squashfs-root/opt/python3.9/bin/
@@ -44,12 +44,14 @@ jobs:
 
         rm -v python* .DirIcon AppRun
 
-        #find . | grep "png"
+        #find . | grep ".png"
+        #find . | grep ".svg"
         cp opt/python3.9/share/icons/hicolor/512x512/apps/maestral.png .
 
-        find . | grep ".desktop"
-        cp usr/share/applications/python3.9.16.desktop .
+        #find . | grep ".desktop"
+        cp opt/python3.9/share/applications/maestral.desktop .
 
+        pwd
         ls -lah
 
         cd ../
