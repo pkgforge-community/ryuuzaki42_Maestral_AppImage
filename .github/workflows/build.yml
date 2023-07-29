@@ -37,6 +37,7 @@ jobs:
 
     - name: Make AppImage
       run: |
+        set -x
         cd squashfs-root/
         pwd
         ls -lah
@@ -46,7 +47,7 @@ jobs:
         #find . | grep "png"
         cp opt/python3.9/share/icons/hicolor/512x512/apps/maestral.png .
 
-        #find . | grep ".desktop"
+        find . | grep ".desktop"
         cp usr/share/applications/python3.9.16.desktop .
 
         ls -lah
