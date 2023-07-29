@@ -52,7 +52,7 @@ jobs:
 
         #find . | grep ".png"
         #find . | grep ".svg"
-        cp opt/python3.9/share/icons/hicolor/512x512/apps/maestral.png .
+        cp opt/python3.*/share/icons/hicolor/512x512/apps/maestral.png .
 
         #find . | grep ".desktop"
         cp opt/python3*/share/applications/maestral.desktop .
