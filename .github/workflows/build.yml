@@ -29,6 +29,8 @@ jobs:
         ./python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage --appimage-extract
 
         cd squashfs-root/opt/python3.9/bin/
+        pwd
+        ls -lah
         ./pip3 install --upgrade 'maestral[gui]'
         ./python3 -m pip install --upgrade pip
         cd ../../../
