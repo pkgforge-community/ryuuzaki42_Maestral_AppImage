@@ -60,6 +60,13 @@ jobs:
         ls -lah squashfs-root/
 
         ARCH=x86_64 ./appimagetool-x86_64.AppImage squashfs-root/
+        
+        fileName=$(ls maestral*.AppImage) 
+        echo "fileName: $fileName"
+        fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
+        mv "$fileName" "${fileNameNew}-1_JB.AppImage"
+        md5sum "${fileNameNew}-1_JB.AppImage" > "${fileNameNew}-1_JB.AppImage.md5"
+        ls -lahR
 
     # Build - Error: Resource not accessible by integration
     # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
@@ -70,7 +77,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          file: "Maestral*.AppImage; Maestral*.md5"
+          file: "maestral*.AppImage; maestral*.md5"
           #delete_file: "random-name-*.txt;random-*.txt"
           release_id: ${{ steps.create_release.outputs.id }}
           #overwrite: true
