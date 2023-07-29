@@ -25,7 +25,7 @@ jobs:
         ./python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage --appimage-extract
         ls -lah
 
-    - name: Make AppImage
+    - name: Install  maestral
       run: |
         set -x
         cd squashfs-root/opt/python3.9/bin/
@@ -34,17 +34,22 @@ jobs:
 
         ./pip3.* install --upgrade 'maestral[gui]'
         ./python3.* -m pip install --upgrade pip
-        cd ../../../
+
+    - name: Make AppImage
+      run: |
+        cd squashfs-root/
         pwd
         ls -lah
 
-        rm -v python* .DirIcon
-        
-        #find squashfs-root/ | grep "png"
+        rm -v python* .DirIcon AppRun
+
+        #find . | grep "png"
         cp opt/python3.9/share/icons/hicolor/512x512/apps/maestral.png .
 
-        find squashfs-root/ | grep ".desktop"
+        #find . | grep ".desktop"
         cp usr/share/applications/python3.9.16.desktop .
+
+        ls -lah
 
         cd ../
         mv AppRun squashfs-root/
