@@ -22,15 +22,16 @@ jobs:
         set -x
         wget https://github.com/niess/python-appimage/releases/download/python3.9/python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage
         chmod +x python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage
+        ./python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage --appimage-extract
+        ls -lah
 
     - name: Make AppImage
       run: |
         set -x
-        ./python3.9.16-cp39-cp39-manylinux_2_24_x86_64.AppImage --appimage-extract
-
         cd squashfs-root/opt/python3.9/bin/
         pwd
         ls -lah
+
         ./pip3.* install --upgrade 'maestral[gui]'
         ./python3.* -m pip install --upgrade pip
         cd ../../../
