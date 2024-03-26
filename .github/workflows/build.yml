@@ -49,7 +49,7 @@ jobs:
 
     - name: Make AppImage
       run: |
-        version_Maestral="1.9.1"
+        version_Maestral="1.9.2"
         set -x
         cd squashfs-root/
         pwd
