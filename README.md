@@ -4,10 +4,10 @@
 ## Repository: https://github.com/ryuuzaki42/maestral_AppImage
 
 ## Run
-    ./maestral*.AppImage
+    ./Maestral-*_JB.AppImage
 
 ### With GUI
-    ./maestral*.AppImage gui
+    ./Maestral-*_JB.AppImage gui
 
 https://maestral.app/
 
