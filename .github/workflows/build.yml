@@ -54,8 +54,7 @@ jobs:
         version_Maestral="1.9.4"
         set -x
         cd squashfs-root/
-        pwd
-        ls -lah
+        pwd; ls -lah
 
         rm -v python* .DirIcon AppRun
 
@@ -67,12 +66,10 @@ jobs:
         cp opt/python3*/share/applications/maestral.desktop .
         cat maestral.desktop
 
-        sed -i "s/Name = Maestral/Name = Maestral-$version_Maestral/" maestral.desktop
+        #sed -i "s/Name = Maestral/Name = Maestral-$version_Maestral/" maestral.desktop
         mv maestral.desktop Maestral.desktop
         cat Maestral.desktop
-
-        pwd
-        ls -lah
+        pwd; ls -lah
 
         cd ../
         mv AppRun squashfs-root/
@@ -82,16 +79,15 @@ jobs:
         # Wrong permissions on AppDir, please set it to 0755 and try again
         chmod 0755 squashfs-root/
 
-        ARCH=x86_64 ./appimagetool-x86_64.AppImage squashfs-root/
+        ARCH=x86_64 VERSION=$version_Maestral ./appimagetool-x86_64.AppImage squashfs-root/
         ls -lah
 
         fileName=$(ls Maestral*.AppImage)
         echo "fileName: $fileName"
 
-        #fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
-        fileNameNew=$(echo "$fileName" | cut -d"-" -f1-2)
+        fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
+        #fileNameNew=$(echo "$fileName" | cut -d"-" -f1-2)
         fileNameNew="${fileNameNew}-x86_64-1_JB.AppImage"
-
 
         mv "$fileName" "$fileNameNew"
         md5sum "$fileNameNew" > "${fileNameNew}.md5"
@@ -106,7 +102,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          file: "Maestral*.AppImage; Maestral*.md5"
+          file: "Maestral*.AppImage; Maestral*.zsync; Maestral*.md5"
           #delete_file: "random-name-*.txt;random-*.txt"
           release_id: ${{ steps.create_release.outputs.id }}
           #overwrite: true
