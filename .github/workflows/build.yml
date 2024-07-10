@@ -97,7 +97,7 @@ jobs:
 
         fileNameNew=$(echo "$fileName" | sed 's/.AppImage//')
         #fileNameNew=$(echo "$fileName" | cut -d"-" -f1-2)
-        fileNameNew="${fileNameNew}-x86_64-1_JB.AppImage"
+        fileNameNew="${fileNameNew}-1_JB.AppImage"
 
         mv "$fileName" "$fileNameNew"
         md5sum "$fileNameNew" > "${fileNameNew}.md5"
