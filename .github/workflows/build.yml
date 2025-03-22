@@ -51,7 +51,8 @@ jobs:
 
     - name: Make AppImage
       run: |
-        version_Maestral="1.9.4"
+        version_Maestral=$(grep -o "Maestral:.*" README.md | cut -d ' ' -f2)
+        echo "version_Maestral: $version_Maestral"
         set -x
         cd squashfs-root/
         pwd; ls -lah
