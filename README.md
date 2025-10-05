@@ -5,10 +5,10 @@
     Maestral: 1.9.5
 
 ## Run
-    ./Maestral-*_JB.AppImage
+    ./Maestral-*_JB-x86_64.AppImage
 
 ### With GUI
-    ./Maestral-*_JB.AppImage gui
+    ./Maestral-*_JB-x86_64.AppImage gui
 
 ---
 https://maestral.app/
