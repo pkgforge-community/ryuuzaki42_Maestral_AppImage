@@ -2,7 +2,7 @@
 # Maestral_AppImage
 
 ## Repository: https://github.com/ryuuzaki42/Maestral_AppImage
-    Maestral: 1.9.4
+    Maestral: 1.9.5
 
 ## Run
     ./Maestral-*_JB.AppImage
