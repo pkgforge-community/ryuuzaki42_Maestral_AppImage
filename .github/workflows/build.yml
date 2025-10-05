@@ -24,24 +24,23 @@ jobs:
         echo "version_go_appimage: $version_go_appimage"
         wget -q "https://github.com/probonopd/go-appimage/releases/download/continuous/appimagetool-$version_go_appimage-x86_64.AppImage" -O appimagetool-x86_64.AppImage
         chmod +x appimagetool-x86_64.AppImage
-        ls -lah
+        pwd; ls -lah
 
     - name: Get Pyhton AppImage
       run: |
         set -x
         #wget https://github.com/niess/python-appimage/releases/download/python3.12/python3.12.3-cp312-cp312-manylinux_2_28_x86_64.AppImage
-        wget https://github.com/niess/python-appimage/releases/download/python3.13/python3.13.7-cp313-cp313-manylinux_2_28_x86_64.AppImage
+        wget https://github.com/ryuuzaki42/Python_to_make_AppImage/releases/download/3.13.3/python3.13.3-cp313-cp313-manylinux2014_x86_64.AppImage
         fileName=$(ls python3*.AppImage)
         chmod +x "$fileName"
         ./"$fileName" --appimage-extract
-        ls -lah
+        pwd; ls -lah
 
     - name: Install maestral and update pip
       run: |
         set -x
         cd squashfs-root/opt/python3*/bin/
-        pwd
-        ls -lah
+        pwd; ls -lah
 
         ./pip3.* install --upgrade 'maestral[gui]'
         ./python3.* -m pip install --upgrade pip
@@ -73,10 +72,6 @@ jobs:
         cat >> squashfs-root/AppRun << 'EOF'
         #!/bin/bash
         HERE="$(dirname "$(readlink -f "${0}")")"
-        echo "HERE: $HERE"
-        HERE=$(echo "$HERE" | sed "s/usr\/bin//")
-        echo "Removed usr/bin HERE: $HERE"
-
         cd "$HERE"/opt/python3*/bin/
         ./maestral "$@"
         EOF
@@ -90,7 +85,7 @@ jobs:
 
         #ARCH=x86_64 VERSION="$version_Maestral" ./appimagetool-x86_64.AppImage squashfs-root/
         ARCH=x86_64 VERSION="${version_Maestral}-1_JB" ./appimagetool-x86_64.AppImage squashfs-root/
-        ls -lah
+        pwd; ls -lah
 
         fileName=$(ls Maestral*.AppImage)
         echo "fileName: $fileName"
