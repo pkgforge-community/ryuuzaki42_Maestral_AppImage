@@ -73,7 +73,11 @@ jobs:
         cat >> squashfs-root/AppRun << 'EOF'
         #!/bin/bash
         HERE="$(dirname "$(readlink -f "${0}")")"
-        cd "$HERE"/opt/python3.*/bin/
+        echo "HERE: $HERE"
+        HERE=$(echo "$HERE" | sed "s/usr\/bin//")
+        echo "Removed usr/bin HERE: $HERE"
+
+        cd "$HERE"/opt/python3*/bin/
         ./maestral "$@"
         EOF
 
