@@ -23,6 +23,7 @@ jobs:
         #wget -q https://github.com/Kron4ek/Conty/releases/download/1.18.6/conty.sh
         wget -q https://github.com/ryuuzaki42/Python_to_make_AppImage/releases/download/07/conty.sh
         chmod +x conty.sh
+        ./conty.sh ldd --version
         pwd; ls -lah
 
     - name: Get appimagetool
