@@ -2,7 +2,7 @@
 # Maestral_AppImage
 
 ## Repository: https://github.com/ryuuzaki42/Maestral_AppImage
-    Maestral: 1.9.5
+    Maestral: 1.9.6
 
 ## Run
     ./Maestral-*_JB-x86_64.AppImage
@@ -15,5 +15,7 @@ https://maestral.app/
 
 https://github.com/samschott/maestral
 
+https://pypi.org/project/maestral/
+
 ---
-https://github.com/samschott/maestral/releases
+https://github.com/samschott/maestral/tags
