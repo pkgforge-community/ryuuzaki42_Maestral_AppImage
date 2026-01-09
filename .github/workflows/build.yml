@@ -60,7 +60,7 @@ jobs:
         ../../../../conty.sh ldd --version
 
         ../../../../conty.sh ./pip3.* install PySide6
-        #./pip3.* install PyQt6
+        ../../../../conty.sh ./pip3.* install PyQt6
 
         #./pip3.* install --upgrade 'maestral[gui]'
         ../../../../conty.sh ./pip3.* install --upgrade 'maestral[gui]'
