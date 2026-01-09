@@ -62,7 +62,7 @@ jobs:
         #../../../../conty.sh ./pip3.* install PySide6
         #../../../../conty.sh ./pip3.* install PyQt6
 
-        ./pip3.* install pyqt6-tools=6.4.2.3.3 --no-build-isolation
+        ./pip3.* install pyqt6-tools==6.4.2.3.3 --no-build-isolation
 
         ./pip3.* install --upgrade 'maestral[gui]'
         #../../../../conty.sh ./pip3.* install --upgrade 'maestral[gui]'
