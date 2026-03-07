@@ -54,12 +54,13 @@ jobs:
 
     - name: Make AppImage
       run: |
+        set -x
+
         version=$(grep -o "Maestral:.*" README.md | cut -d ' ' -f2)
         echo "version: $version"
-        set -x
+        
         cd squashfs-root/
         pwd; ls -lah
-
         rm -v python* .DirIcon AppRun
 
         #find . | grep ".png"
@@ -80,7 +81,7 @@ jobs:
         ./maestral "$@"' > squashfs-root/AppRun
         chmod +x squashfs-root/AppRun
 
-        mv README.md squashfs-root/
+        cp README.md squashfs-root/
         ls -lah squashfs-root/
 
         # Wrong permissions on AppDir, please set it to 0755 and try again
@@ -94,10 +95,6 @@ jobs:
         echo "fileName: $fileName"
         md5sum "$fileName" > "${fileName}.md5"
         pwd; ls -lah
-
-    # Build - Error: Resource not accessible by integration
-    # Change Settings -> Actions -> General -> Workflow Permissions to allow read and write:
-    # https://github.com/actions/first-interaction/issues/10#issuecomment-1506118886
 
     # https://github.com/marketplace/actions/upload-to-github-release
     - uses: xresloader/upload-to-github-release@main
