@@ -64,26 +64,22 @@ jobs:
 
         #find . | grep ".png"
         #find . | grep ".svg"
-        cp opt/python3.*/share/icons/hicolor/512x512/apps/maestral.png .
+        ln -s opt/python3.*/share/icons/hicolor/512x512/apps/maestral.png maestral.png
 
         #find . | grep ".desktop"
-        cp opt/python3*/share/applications/maestral.desktop .
-        cat maestral.desktop
+        ln -s opt/python3*/share/applications/maestral.desktop Maestral.desktop
 
         #sed -i "s/Name = Maestral/Name = Maestral-$version/" maestral.desktop
-        mv maestral.desktop Maestral.desktop
         cat Maestral.desktop
         pwd; ls -lah
 
         cd ../
-        cat >> squashfs-root/AppRun << 'EOF'
-        #!/bin/bash
+        echo '#!/bin/bash
         HERE="$(dirname "$(readlink -f "${0}")")"
         cd "$HERE"/opt/python3*/bin/
-        ./maestral "$@"
-        EOF
-
+        ./maestral "$@"' > squashfs-root/AppRun
         chmod +x squashfs-root/AppRun
+
         mv README.md squashfs-root/
         ls -lah squashfs-root/
 
