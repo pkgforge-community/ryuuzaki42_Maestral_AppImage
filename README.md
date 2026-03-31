@@ -1,7 +1,7 @@
 
 # Maestral_AppImage
 
-Maestral is a lightweight Dropbox client for macOS and Linux. It provides powerful command line tools, supports gitignore patterns to exclude local files from syncing and allows syncing multiple Dropbox accounts. 
+Maestral is a lightweight Dropbox client
 
 https://maestral.app/
 
