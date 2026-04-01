@@ -9,12 +9,13 @@ https://maestral.app/
     Maestral: 1.9.6
 
 ## Run
-    # CLI
+```
+# CLI
     ./Maestral-*_JB-x86_64.AppImage
 
-    # GUI
+# GUI
     ./Maestral-*_JB-x86_64.AppImage gui
-
+```
 ---
 https://github.com/samschott/maestral
 
