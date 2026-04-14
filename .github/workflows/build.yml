@@ -31,7 +31,7 @@ jobs:
     - name: Get Python AppImage
       run: |
         set -x
-        #wget https://github.com/niess/python-appimage/releases/download/python3.12/python3.12.3-cp312-cp312-manylinux_2_28_x86_64.AppImage
+        #wget -q https://github.com/niess/python-appimage/releases/download/python3.12/python3.12.3-cp312-cp312-manylinux_2_28_x86_64.AppImage
         wget -q https://github.com/ryuuzaki42/Python_to_make_AppImage/releases/download/06/python3.13.3-cp313-cp313-manylinux2014_x86_64.AppImage
         fileName=$(ls python3*.AppImage)
         chmod +x "$fileName"
@@ -55,13 +55,13 @@ jobs:
     - name: Make AppImage
       run: |
         set -x
-        version=$(grep -o "Maestral:.*" README.md | cut -d ' ' -f2)
-        echo "version: $version"
         tag=2 #1
+        version=$(grep -o "Maestral:.*" README.md | cut -d ' ' -f2)
+        echo "Maestral version: $version - Tag: $tag"
 
         cd squashfs-root/
         pwd; ls -lah
-        rm -v python* .DirIcon AppRun
+        rm -v python.png python*.desktop .DirIcon AppRun
 
         #find . | grep ".png"
         ln -s opt/python3.*/share/icons/hicolor/512x512/apps/maestral.png maestral.png
