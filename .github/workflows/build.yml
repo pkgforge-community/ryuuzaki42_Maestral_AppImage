@@ -55,7 +55,7 @@ jobs:
     - name: Make AppImage
       run: |
         set -x
-        tag=2 #1
+        tag=3 #1
         version=$(grep -o "Maestral:.*" README.md | cut -d ' ' -f2)
         echo "Maestral version: $version - Tag: $tag"
 
@@ -81,6 +81,7 @@ jobs:
         echo '#!/bin/bash
         HERE="$(dirname "$(readlink -f "${0}")")"
         cd "$HERE"/opt/python3*/bin/
+        export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HERE/usr/lib/
         ./maestral "$@"' > AppRun
         chmod +x AppRun
 
