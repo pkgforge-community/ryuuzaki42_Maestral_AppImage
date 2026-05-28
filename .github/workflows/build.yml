@@ -64,7 +64,8 @@ jobs:
         rm -v python.png python*.desktop .DirIcon AppRun
 
         ## Add libxcb-cursor from Ubuntu
-        cd usr/lib/
+        cd usr/
+        mkdir libxcb-cursor/; cd libxcb-cursor/
         wget -q https://github.com/ryuuzaki42/Calibre_AppImage/releases/download/main-00000000/libxcb-cursor.so.0.0.0
         ln -s libxcb-cursor.so.0.0.0 libxcb-cursor.so.0
         cd ../../
@@ -83,7 +84,7 @@ jobs:
         cd "$HERE"/opt/python3*/bin/
 
         if [ ! -f /usr/lib/x86_64-linux-gnu/libxcb-cursor.so.0 ] && [ ! -f /usr/lib64/libxcb-cursor.so.0 ]; then # Check if has libxcb-cursor
-            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HERE/usr/lib/
+            export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HERE/usr/libxcb-cursor/
         fi
 
         ./maestral "$@"' > AppRun
