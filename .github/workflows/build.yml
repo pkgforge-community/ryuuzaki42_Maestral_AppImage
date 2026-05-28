@@ -63,6 +63,13 @@ jobs:
         pwd; ls -lah
         rm -v python.png python*.desktop .DirIcon AppRun
 
+        ## Add libxcb-cursor from Ubuntu
+        cd usr/lib/
+        wget -q https://github.com/ryuuzaki42/Calibre_AppImage/releases/download/main-00000000/libxcb-cursor.so.0.0.0
+        ln -s libxcb-cursor.so.0.0.0 libxcb-cursor.so.0
+        cd ../../
+        pwd; ls -lah
+
         #find . | grep ".png"
         ln -s opt/python3.*/share/icons/hicolor/512x512/apps/maestral.png maestral.png
 
